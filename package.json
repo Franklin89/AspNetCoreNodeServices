@@ -1,0 +1,7 @@
+{
+    "name": "carboneasnodeservice",
+    "dependencies": {
+        "carbone": "^1.1.0"
+    },
+    "devDependencies": {}
+}
