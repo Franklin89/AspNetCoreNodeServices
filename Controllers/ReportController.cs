@@ -14,13 +14,23 @@ namespace CarboneAsNodeService.Controllers
             _nodeServices = nodeServices;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Create()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([FromForm]string firstname, [FromForm] string lastname)
         {
-            var result = await _nodeServices.InvokeExportAsync<byte[]>("./node/carbone.js", "create",
-                                    JsonConvert.SerializeObject(new { firstname = "Matteo", lastname = "Locher" }));
+            var result = await _nodeServices.InvokeExportAsync<Document>(
+                                    "./node/carbone.js", // Path to our JavaScript file
+                                    "create", // Exported function name
+                                    JsonConvert.SerializeObject(new { firstname, lastname })); // Arguments, in this case a json string
 
-            return File(result, "odt");
+            return File(result.data, "application/vnd.oasis.opendocument.text");
         }
     }
+}
+
+
+public class Document
+{
+    public string type { get; set; }
+    public byte[] data { get; set; }
 }

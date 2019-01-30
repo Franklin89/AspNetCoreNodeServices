@@ -5,7 +5,16 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <a class="btn btn-primary" asp-controller="Report" asp-action="Create">Create Report</a>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Render a simple word template</h1>
+
+    <form asp-controller="Report" asp-action="Create" method="post">
+        <div class="form-group">
+            <input class="form-control" name="firstname"placeholder="Firstname" />
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="lastname" placeholder="Lastname" />
+        </div>
+        <button class="btn btn-primary" type="submit">Create Report</button>
+    </form>
+
 </div>

@@ -1,6 +1,5 @@
-const fs = require('fs');
+// const fs = require('fs');
 const carbone = require('carbone');
-
 
 module.exports = {
   create: function (callback, dataIn, options) {
@@ -10,24 +9,11 @@ module.exports = {
         console.log(err);
         callback(err, null);
       }
-      // write the result
-      fs.writeFileSync('result.odt', result);
-      callback(null, data);
+      // write the result to the filesystem
+      // fs.writeFileSync('result.odt', result);
+      
+      // return the result
+      callback(null, result);
     });
   }
 };
-
-// module.exports = function (callback, dataIn) {
-
-// var data = {
-//   firstname : 'John',
-//   lastname : 'Doe'
-// };
-
-
-// !!! Requires LibreOffice to work !!!
-// var options = {
-//   convertTo : 'txt' //can be docx, txt, ...
-// };
-
-// };
